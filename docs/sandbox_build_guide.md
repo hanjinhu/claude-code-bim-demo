@@ -2,10 +2,7 @@
 
 ## Instructions for Claude Code — Demo Repo Setup
 
-You are setting up a demo repository for a webinar about BIM data dictionary
-development. Your job is to build out the full sandbox structure: folders,
-reference documents, a dummy IR Excel workbook, QAQC rules, and a CLAUDE.md
-file. Follow every instruction below exactly.
+You are setting up a demo repository for a webinar about BIM data dictionary development. Your job is to build out the full sandbox structure: folders, reference documents, a dummy IR Excel workbook, QAQC rules, and a CLAUDE.md file. Follow every instruction below exactly.
 
 ---
 
@@ -20,7 +17,7 @@ information_requirements/
 data_dictionary/
 qaqc/
 scripts/
-outputs/
+scripts/outputs/
 ```
 
 ---
