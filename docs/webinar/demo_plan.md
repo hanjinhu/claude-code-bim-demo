@@ -214,13 +214,32 @@ Read the sample scripts in ifc/sample_codes/ to understand the ifcopenshell patt
 for creating IFC models and adding property sets.
 
 Then write a Python script at scripts/ifc/create_pipe_model.py that:
-1. Creates a new IFC model
-2. Adds one IfcPipeSegment element named "Demo_Pipe_001"
-3. Reads the General Features properties from data_dictionary/PROPERTIES_23386.csv
-4. Attaches those properties as a property set called "Pset_GeneralFeatures" on the pipe
+1. Creates a new IFC4X3 model (Project → Site) with SI units and a Body geometry context
+2. Adds one IfcPipeSegment (predefined_type="RIGIDSEGMENT") named "Demo_Pipe_001"
+   - Geometry: circular hollow profile, 300 mm OD, 25 mm wall, 2 m long, along Z axis
+3. Reads the General Features properties from data_dictionary/ by joining:
+   PROPERTY_GROUPS_23386.csv → GROUP_PROPERTY_MEMBERSHIP.csv → PROPERTIES_23386.csv
+   Filter to group key urn:demo:propertygroup:general_features; use Names_in_language_N
+   (strip " | en-EN") as property display names
+4. Attaches those properties as a property set called "Pset_GeneralFeatures" on the pipe,
+   with realistic demo values (e.g. UtilityType: "Water", Owner: "City Public Works
+   Department", PermitNumber: "UGU-2026-001"). Add a PROPERTY_VALUES dict at the top
+   of the script; fall back to "N/A" for any property not in the dict.
 5. Saves the model to outputs/demo_pipe_model.ifc
 
-Use the same ifcopenshell.api pattern as the sample scripts.
+Follow the ifc_sample_code_3.py pattern exactly for geometry:
+  - Use model.create_entity("IfcCircleHollowProfileDef", ...) — not model.createIfc*
+  - Use ifcopenshell.api.geometry.add_profile_representation(model, context=body, profile=profile, depth=<metres>)
+  - Use ifcopenshell.api.geometry.assign_representation and edit_object_placement
+
+IMPORTANT — unit mismatch to avoid: assign_unit() sets the model unit to millimetres.
+add_profile_representation converts depth from SI (metres) to mm automatically.
+But model.create_entity writes profile values (Radius, WallThickness) as raw numbers
+with no conversion. So multiply those values by 1000 when passing to create_entity
+(e.g. Radius=0.15 * 1000 → stored as 150 mm). Without this the profile will be
+0.15 mm wide while the extrusion is 2000 mm long — completely out of scale.
+
+Use encoding="utf-8-sig" for all CSV reads (Excel BOM).
 ```
 
 **Script:**
