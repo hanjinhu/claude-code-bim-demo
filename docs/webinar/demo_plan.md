@@ -1,7 +1,7 @@
 # Webinar Demo Plan
 
 **Event:** Claude Code: Real-World Use Cases and Lessons Learned
-**Date:** June 26, 2026
+**Date:** June 26, 2026, 2:30 to 3:30 pm ET
 **Audience:** Accenture AI Champion Network — engineers and PMs, mixed technical levels
 **Goal:** Show real results, make Claude Code feel accessible and worth trying
 **Duration:** 12 minutes
@@ -20,15 +20,15 @@
 
 ## Demo Arc
 
-| Time         | Segment                               | What to Show                                                                                                                                            | Why It Lands                                                           |
-| ------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| 0:00–1:30   | **The problem**                 | Pipeline slide → open real Caltrans IR Excel (`sample/`) → open real DD Excel → mention 47-rule QA review                                            | Audience feels the complexity before you solve it                      |
-| 1:30–2:00   | **Sandbox transition**          | Switch to the sandbox repo — explain why: production data is confidential, don't want to risk live edits; sandbox is downloadable for the audience      | Sets up credibility: this is based on real work, not a toy example     |
-| 2:00–4:00   | **Teaching Claude the project** | Ask Claude to read the repo files and summarize; run`/init` to generate CLAUDE.md; scroll through it                                                  | Key insight:*invest once in context, Claude remembers every session* |
-| 4:00–6:30   | **Dev: IR → Data Dictionary**  | Claude reads IR Excel, writes a script to copy template CSVs to`data_dictionary/` and populate them; show the populated CSV                           | Shows Claude respects*your* conventions, not generic ones            |
-| 6:30–9:00   | **QA/QC automation**            | Claude writes check scripts from`qaqc/qaqc_rules.md`; deliberately introduce an error; script catches it; Claude fixes it and re-runs clean           | Non-developers: you don't need to read code to get value               |
-| 9:00–11:00  | **IFC model**                   | Claude reads`ifc/sample_codes/`, writes a script that creates a pipe model with property sets from the data dictionary; show the output `.ifc` file | Full pipeline payoff: the dictionary isn't just a spreadsheet          |
-| 11:00–12:00 | **One takeaway**                | "I didn't teach it Python. I taught it my project."                                                                                                     | Memorable, repeatable message for the network                          |
+| Time         | Segment                               | What to Show                                                                                                                                            | Why It Lands                                                             |
+| ------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 0:00–1:30   | **The problem**                 | Pipeline slide → open real Caltrans IR Excel (`sample/`) → open real DD Excel → mention 47-rule QA review                                          | Audience feels the complexity before you solve it                        |
+| 1:30–2:00   | **Sandbox transition**          | Switch to the sandbox repo — explain why: production data is confidential, don't want to risk live edits; sandbox is downloadable for the audience     | Sets up credibility: this is based on real work, not a toy example       |
+| 2:00–4:00   | **Teaching Claude the project** | Ask Claude to read the repo files and summarize; run`/init` to generate CLAUDE.md; scroll through it                                                  | Key insight: *invest once in context, Claude remembers every session* |
+| 4:00–6:30   | **Dev: IR → Data Dictionary**  | Claude reads IR Excel, writes a script to copy template CSVs to`data_dictionary/` and populate them; show the populated CSV                           | Shows Claude respects*your* conventions, not generic ones              |
+| 6:30–9:00   | **QA/QC automation**            | Claude writes check scripts from`qaqc/qaqc_rules.md`; deliberately introduce an error; script catches it; Claude fixes it and re-runs clean           | Non-developers: you don't need to read code to get value                 |
+| 9:00–11:00  | **IFC model**                   | Claude reads`ifc/sample_codes/`, writes a script that creates a pipe model with property sets from the data dictionary; show the output `.ifc` file | Full pipeline payoff: the dictionary isn't just a spreadsheet            |
+| 11:00–12:00 | **One takeaway**                | "I didn't teach it Python. I taught it my project."                                                                                                     | Memorable, repeatable message for the network                            |
 
 ---
 
