@@ -12,16 +12,10 @@ This project builds a **data dictionary** for underground utility assets — pip
 
 Information Requirements → Data Dictionary → Data Sheets → IFC Model
 
-- **Information Requirements (IR):** The client specifies what data needs
-  to be captured for each asset type — property names, descriptions, and
-  groupings called property sets.
-- **Data Dictionary (DD):** We translate those requirements into a
-  structured definition — objects, templates, properties, and groups —
-  each with a unique identifier and standard key format.
-- **Data Sheets:** Tabular outputs populated from the data dictionary,
-  used to feed asset databases.
-- **IFC Model:** The open BIM exchange format that consumes the data
-  dictionary to enrich model elements with property sets.
+- **Information Requirements (IR):** The client specifies what data needs to be captured for each asset type — property names, descriptions, and groupings called property sets.
+- **Data Dictionary (DD):** We translate those requirements into a structured definition — objects, templates, properties, and groups — each with a unique identifier and standard key format.
+- **Data Sheets:** Tabular outputs populated from the data dictionary, used to feed asset databases.
+- **IFC Model:** The open BIM exchange format that consumes the data dictionary to enrich model elements with property sets.
 
 ## Repository Structure
 
@@ -31,6 +25,7 @@ Information Requirements → Data Dictionary → Data Sheets → IFC Model
 ├── information_requirements/    # Input: IR workbook from the client
 ├── data_dictionary/             # Output: parsed CSV files (generated)
 ├── qaqc/                        # QA rules to validate the dictionary
+├── ifc/                         # Scripts to generate IFC property sets (generated)
 ├── scripts/                     # Automation scripts (generated)
 └── outputs/                     # Exploration and script outputs
 ```
