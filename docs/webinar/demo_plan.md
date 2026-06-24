@@ -114,18 +114,30 @@ conventions I need to follow, and what are the three main tasks we'll be doing t
 Read the information requirements workbook at
 information_requirements/information_requirements.xlsx.
 It has one sheet with four columns: Elements, Property Sets, Properties, Description.
+Forward-fill the Elements and Property Sets columns where cells are blank — Excel
+often leaves them empty when values carry over from the row above.
 
 Then write a Python script under scripts/update/ that:
 1. Makes a copy of each CSV in data_dictionary/template/ into data_dictionary/
 2. Reads every row from the IR and adds the corresponding entries to:
-   - data_dictionary/PROPERTIES_23386.csv (one row per property)
+   - data_dictionary/PROPERTIES_23386.csv (one row per unique property)
    - data_dictionary/PROPERTY_GROUPS_23386.csv (one row per unique property set)
    - data_dictionary/GROUP_PROPERTY_MEMBERSHIP.csv (linking properties to groups)
    - data_dictionary/OBJECTS_12006.csv (one row per unique element)
 
 Follow the conventions in CLAUDE.md: URN key format urn:demo:property:<snake_case>,
-UUID4 GUIDs, Display_Order 0. Use data_dictionary/sample/ CSVs as a format reference —
+Display_Order 0. Use data_dictionary/sample/ CSVs as a format reference —
 but use urn:demo:... keys, not urn:caltrans:...
+
+For every row added, generate a deterministic GUID using uuid5 derived from the
+entity's URN key — not uuid4. Use a fixed project namespace so the same URN key
+always produces the same GUID. Write the GUID to the Globally_unique_identifier
+column for objects, property groups, and properties alike. Use the same GUIDs in
+GROUP_PROPERTY_MEMBERSHIP.csv.
+
+When reading or writing the template CSVs, use encoding="utf-8-sig" — the files
+have an Excel BOM, and using plain utf-8 will silently corrupt the first column
+header, leaving the Globally_unique_identifier column blank.
 
 Save the script to scripts/update/ir_to_dd.py.
 ```
