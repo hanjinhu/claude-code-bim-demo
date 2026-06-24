@@ -45,7 +45,7 @@
 
 **Script:**
 
-> "I'm going to show you something I've been working on for a real client project — Caltrans, California's Department of Transportation. The overall workflow looks like this. [show slide] We start with an **information requirements document** — the client telling us what data they need to capture for every underground utility asset: pipes, conduits, manholes, valves. That drives the **data dictionary**, which is the structured definition of every object, property, and rule. The dictionary then feeds two outputs: **data sheets** used to populate an asset database, and **IFC models** — the open format used for exchanging BIM data.
+> "I'm going to show you something I've been working on for a real client project. The overall workflow looks like this. [show slide] We start with an **information requirements document** — the client telling us what data they need to capture for every underground utility asset: pipes, conduits, manholes, valves. That drives the **data dictionary**, which is the structured definition of every object, property, and rule. The dictionary then feeds two outputs: **data sheets** used to populate an asset database, and **IFC models** — the open format used for exchanging BIM data.
 >
 > [open IR Excel] This is the information requirements workbook — each row is a property the client needs. [open DD Excel] This is the data dictionary we're building from it — about a dozen interconnected sheets, hundreds of properties, strict rules about how everything links. [show QA PDF] And this is the QA review we received from the client — 47 rules we have to check the dictionary against before delivery.
 >
@@ -54,10 +54,6 @@
 ---
 
 ### 1:30–2:00 — Sandbox Transition
-
-**Screen:**
-
-Switch from the Caltrans repo to the sandbox repo in VS Code Explorer.
 
 **Script:**
 
