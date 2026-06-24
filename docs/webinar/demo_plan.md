@@ -20,15 +20,15 @@
 
 ## Demo Arc
 
-| Time         | Segment                               | What to Show                                                                                                                                            | Why It Lands                                                             |
-| ------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| 0:00–1:30   | **The problem**                 | Pipeline slide → open real Caltrans IR Excel (`sample/`) → open real DD Excel → mention 47-rule QA review                                          | Audience feels the complexity before you solve it                        |
-| 1:30–2:00   | **Sandbox transition**          | Switch to the sandbox repo — explain why: production data is confidential, don't want to risk live edits; sandbox is downloadable for the audience     | Sets up credibility: this is based on real work, not a toy example       |
-| 2:00–4:00   | **Teaching Claude the project** | Ask Claude to read the repo files and summarize; run`/init` to generate CLAUDE.md; scroll through it                                                  | Key insight: *invest once in context, Claude remembers every session* |
-| 4:00–6:30   | **Dev: IR → Data Dictionary**  | Claude reads IR Excel, writes a script to copy template CSVs to`data_dictionary/` and populate them; show the populated CSV                           | Shows Claude respects*your* conventions, not generic ones              |
-| 6:30–9:00   | **QA/QC automation**            | Claude writes check scripts from`qaqc/qaqc_rules.md`; deliberately introduce an error; script catches it; Claude fixes it and re-runs clean           | Non-developers: you don't need to read code to get value                 |
-| 9:00–11:00  | **IFC model**                   | Claude reads`ifc/sample_codes/`, writes a script that creates a pipe model with property sets from the data dictionary; show the output `.ifc` file | Full pipeline payoff: the dictionary isn't just a spreadsheet            |
-| 11:00–12:00 | **One takeaway**                | "I didn't teach it Python. I taught it my project."                                                                                                     | Memorable, repeatable message for the network                            |
+| Time         | Segment                               | What to Show                                                                                                                                            | Why It Lands                                                           |
+| ------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 0:00–1:30   | **The problem**                 | Pipeline slide → open real Caltrans IR Excel (`sample/`) → open real DD Excel → mention 47-rule QA review                                          | Audience feels the complexity before you solve it                      |
+| 1:30–2:00   | **Sandbox transition**          | Switch to the sandbox repo — explain why: production data is confidential, don't want to risk live edits; sandbox is downloadable for the audience     | Sets up credibility: this is based on real work, not a toy example     |
+| 2:00–4:00   | **Teaching Claude the project** | Ask Claude to read the repo files and summarize; run`/init` to generate CLAUDE.md; scroll through it                                                  | Key insight:*invest once in context, Claude remembers every session* |
+| 4:00–6:30   | **Dev: IR → Data Dictionary**  | Claude reads IR Excel, writes a script to copy template CSVs to`data_dictionary/` and populate them; show the populated CSV                           | Shows Claude respects*your* conventions, not generic ones            |
+| 6:30–9:00   | **QA/QC automation**            | Claude writes check scripts from`qaqc/qaqc_rules.md`; deliberately introduce an error; script catches it; Claude fixes it and re-runs clean           | Non-developers: you don't need to read code to get value               |
+| 9:00–11:00  | **IFC model**                   | Claude reads`ifc/sample_codes/`, writes a script that creates a pipe model with property sets from the data dictionary; show the output `.ifc` file | Full pipeline payoff: the dictionary isn't just a spreadsheet          |
+| 11:00–12:00 | **One takeaway**                | "I didn't teach it Python. I taught it my project."                                                                                                     | Memorable, repeatable message for the network                          |
 
 ---
 
@@ -210,36 +210,26 @@ outputs/qaqc_results.txt — listing any violations found, or confirming all che
 **IFC prompt (paste this):**
 
 ```
-Read the sample scripts in ifc/sample_codes/ to understand the ifcopenshell pattern
-for creating IFC models and adding property sets.
+Read the sample scripts in ifc/sample_codes/ to understand the ifcopenshell.api pattern for geometry and property sets.
 
 Then write a Python script at scripts/ifc/create_pipe_model.py that:
-1. Creates a new IFC4X3 model (Project → Site) with SI units and a Body geometry context
-2. Adds one IfcPipeSegment (predefined_type="RIGIDSEGMENT") named "Demo_Pipe_001"
-   - Geometry: circular hollow profile, 300 mm OD, 25 mm wall, 2 m long, along Z axis
-3. Reads the General Features properties from data_dictionary/ by joining:
-   PROPERTY_GROUPS_23386.csv → GROUP_PROPERTY_MEMBERSHIP.csv → PROPERTIES_23386.csv
-   Filter to group key urn:demo:propertygroup:general_features; use Names_in_language_N
-   (strip " | en-EN") as property display names
-4. Attaches those properties as a property set called "Pset_GeneralFeatures" on the pipe,
-   with realistic demo values (e.g. UtilityType: "Water", Owner: "City Public Works
-   Department", PermitNumber: "UGU-2026-001"). Add a PROPERTY_VALUES dict at the top
-   of the script; fall back to "N/A" for any property not in the dict.
-5. Saves the model to outputs/demo_pipe_model.ifc
+1. Creates a new IFC4X3 model with SI units and a Body context
+2. Adds one pipe segment named "Demo_Pipe_001" with a circular hollow profile:
+   300 mm OD, 25 mm wall, 2 m long, along the X axis
+3. Looks up the General Features property group (urn:demo:propertygroup:general_features)
+   by joining PROPERTY_GROUPS_23386.csv → GROUP_PROPERTY_MEMBERSHIP.csv →
+   PROPERTIES_23386.csv, and attaches those properties as "Pset_GeneralFeatures"
+   with realistic values (UtilityType: Water, Owner: City Public Works Department,
+   PermitNumber: UGU-2026-001)
+4. Saves to outputs/demo_pipe_model.ifc
 
-Follow the ifc_sample_code_3.py pattern exactly for geometry:
-  - Use model.create_entity("IfcCircleHollowProfileDef", ...) — not model.createIfc*
-  - Use ifcopenshell.api.geometry.add_profile_representation(model, context=body, profile=profile, depth=<metres>)
-  - Use ifcopenshell.api.geometry.assign_representation and edit_object_placement
+Two things to get right:
+- Follow ifc_sample_code_3.py: model.create_entity for the profile,
+  add_profile_representation + assign_representation + edit_object_placement
+- Profile values go to create_entity in mm (model unit), so multiply metres by 1000.
+  depth in add_profile_representation stays in metres — the API converts automatically.
 
-IMPORTANT — unit mismatch to avoid: assign_unit() sets the model unit to millimetres.
-add_profile_representation converts depth from SI (metres) to mm automatically.
-But model.create_entity writes profile values (Radius, WallThickness) as raw numbers
-with no conversion. So multiply those values by 1000 when passing to create_entity
-(e.g. Radius=0.15 * 1000 → stored as 150 mm). Without this the profile will be
-0.15 mm wide while the extrusion is 2000 mm long — completely out of scale.
-
-Use encoding="utf-8-sig" for all CSV reads (Excel BOM).
+Use encoding="utf-8-sig" for all CSV reads.
 ```
 
 **Script:**
