@@ -1,9 +1,0 @@
-QA/QC Results — Data Dictionary
-File:  data_dictionary\PROPERTIES_23386.csv
-Rows checked: 8
-
-[PASS] DD-01: GUID uniqueness
-
-[PASS] DD-02: Property key format
-
-Overall: ALL CHECKS PASSED
