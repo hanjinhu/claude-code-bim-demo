@@ -54,9 +54,7 @@
 
 > "Quick note before I start. My demo today is based on a real client project. The production repo has client data I can't show on screen. Plus, I don't want to mess up the production repo. So I created a sandbox.
 >
-> Same structure. Same conventions. Just simpler dummy data. You can download it after this session and play with it.
->
-> Everything I'm about to show works the same way on the real project."
+> Same structure. Same conventions. Just simpler dummy data. The good thing is you can download it after this session and play with it."
 
 ---
 
@@ -81,7 +79,7 @@
 >
 > Doing all of this by hand takes days. You have to keep the dictionary in sync with the requirements. You have to catch errors across many sheets. Easy to get wrong."
 
-**Transition:** *"Let me start by teaching Claude what this project is."*
+**Transition:** *"Let me see how Claude code can help."*
 
 ---
 
@@ -107,7 +105,7 @@ conventions I need to follow, and what are the three main tasks we'll be doing t
 
 **Mindset framing (say this first, before the screen demo):**
 
-> "Quick thing before I start. I don't treat Claude Code as a tool. I treat it as a co-worker. Like an intern who helps me with tasks.
+> "In general, I don't treat Claude Code as a tool. I treat it as a co-worker. Like an intern who helps me with tasks.
 >
 > When I give a task to an intern, I do three things.
 >
@@ -132,8 +130,6 @@ conventions I need to follow, and what are the three main tasks we'll be doing t
 > When I learned to drive, before I learned how to move a car, I had to learn how to stop one. Same idea here. When a prompt goes wrong, I type `/rewind`. That undoes Claude's last step and go back to the last checkpoint. Then I try again with a better prompt.
 >
 > It is good to learn this one early."
-
-**Transition:** *"Now let's put that understanding to work."*
 
 ---
 
@@ -182,13 +178,13 @@ Save the script to scripts/update/ir_to_dd.py.
 
 **Script:**
 
-> "Now let's build the data dictionary from scratch. The client gives me the information requirements. I need to turn them into the four CSV files. [show IR] Here's the IR. Properties, descriptions, and the property sets they belong to.
+> "Now let's build the data dictionary. The client gives me the information requirements. I need to turn them into the four CSV files.
 >
-> If I did this by hand, here is what I would do. Start from the empty templates. Copy them into the data dictionary folder. Then fill them in row by row from the IR. Now Claude Code will do it for me. It will create a new GUID for every object, every property group, every property. It will make sure every key is in the right format. And it will build the membership file that links properties to groups. [paste prompt]
+> If I did this by hand, here is what I would do. Start from the empty templates. Copy them into the data dictionary folder. Then fill them in row by row from the IR. Now Claude Code will do it for me. [paste prompt]
 >
 > I'm not writing code. I'm describing the task the way I'd describe it to an engineer. What the input is. What the output should be. What rules to follow. [watch Claude work]
 >
-> [open populated CSV] There it is. Correct GUIDs. Correct URN keys. Linked to the right property groups. Zero manual work after that prompt."
+> [open populated CSV] There it is. Correct GUIDs. Correct URN keys. Linked to the right property groups."
 
 **Transition:** *"Next step. Let's review the output and run QA/QC on it."*
 
@@ -227,7 +223,7 @@ outputs/qaqc_results.txt — listing any violations found, or confirming all che
 
 **Script:**
 
-> "OK, so the client gave us a QA review with 47 rules. I picked two of them for the demo. [open qaqc_rules.md] Rule DD-01 — no duplicate GUIDs. Rule DD-02 — every property key has to follow the URN format. Let's have Claude write a checker for both. [paste prompt, watch Claude write the script, run it] Clean. All good.
+> "OK, so the client gave us a QA review with 47 rules. I picked two of them for the demo. [open qaqc_rules.md] Rule DD-01 — no duplicate GUIDs. Rule DD-02 — every property key has to follow the URN format. Let me ask Claude write a checker for both. [paste prompt, watch Claude write the script, run it] Clean. All good.
 >
 > Now let's break something on purpose. Something that's easy to miss by eye. [edit the CSV] I just changed a property key to have a space in it. Let's re-run the check. [re-run] There it is. DD-02 violation. It tells me exactly which row, and what the problem is. Now let's ask Claude to fix it. [ask Claude to fix it, re-run] Clean again.
 >
@@ -275,9 +271,9 @@ Use encoding="utf-8-sig" for all CSV reads.
 
 **Script:**
 
-> "OK, last step. Let's build the IFC model. IFC is the open standard for BIM. IFC models are the end product for digital delivery projects — like the one we did for PennDOT, the first digital delivery project in the US bridge industry. It's what the data sheets feed into.
+> "OK, last step. Let's build the IFC model. IFC is the open standard for BIM. IFC models are the end product for digital delivery projects — like the one we did for PennDOT, the first digital delivery project in the US bridge industry.
 >
-> Now, writing Python code to generate IFC takes special skills. So I want to give Claude some examples to follow. [open `ifc/sample_codes/` folder] I put three Python files in here. They all use a library called `ifcopenshell` to create IFC models. [open one file] This one is from the official `ifcopenshell` documentation. [open another] These two are from my previous projects. I use these files to teach Claude how to write IFC code. Remember the recipe — context, requirements, examples. This is the examples part. [paste prompt, watch Claude work]
+> Now, I want Claude to write Python code to generate IFC models. However, it takes special skills, and I don't think Anthropic trained the model about this specific task. So I want to give Claude some examples to follow. [open `ifc/sample_codes/` folder] I put three Python files in here. They all use a library called `ifcopenshell` to create IFC models. [open one file] This one is from the official `ifcopenshell` documentation. [open another] These two are from my previous projects. I use these files to teach Claude how to write IFC code. Remember the recipe — context, requirements, examples. This is the examples part. [paste prompt, watch Claude work]
 >
 > [user runs the script] And there's the model. The property set is attached. The data dictionary defined the properties. The IFC model consumes them. That's the full pipeline. Requirements in. Model out."
 
@@ -291,11 +287,7 @@ Use encoding="utf-8-sig" for all CSV reads.
 
 **Script:**
 
-> "Let me quickly recap what we just did. We started with the client's requirements — just a plain Excel file. Claude read it. It understood the structure. It built the data dictionary from it. Then it checked its own work against the QA rules. And it produced an IFC model, ready to share.
->
-> Here's the thing. I didn't teach Claude Python. I taught it my project. The CLAUDE.md, the organized folders, the README — that's where the value is. Every session after that investment, Claude works like someone who already knows the codebase.
->
-> So that's the shift. Stop thinking about what Claude can do in general. Start thinking about what it can do *in your project*, once it knows it."
+> "So that's the shift. Stop thinking about what Claude can do in general. Start thinking about what it can do *in your project*, once it knows it."
 
 ---
 

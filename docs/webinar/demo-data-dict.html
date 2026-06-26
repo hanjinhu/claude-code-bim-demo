@@ -1,0 +1,720 @@
+<!DOCTYPE html><html><head>
+<title>demo-data-dict.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*
+
+Arduino® Light Theme - Stefania Mellai <s.mellai@arduino.cc>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #FFFFFF;
+}
+
+.hljs,
+.hljs-subst {
+  color: #434f54;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name {
+  color: #00979D;
+}
+
+.hljs-built_in,
+.hljs-literal,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #D35400;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #00979D;
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #005C5F;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-comment {
+  color: rgba(149,165,166,.8);
+}
+
+.hljs-meta-keyword {
+  color: #728E00;
+}
+
+.hljs-meta {
+  color: #434f54;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-function {
+  color: #728E00;
+}
+
+.hljs-number {
+  color: #8A7B52;  
+}
+
+</style>
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family:   "HelveticaNeue-Light", sans-serif, "宋体","Segoe WPC", "Segoe UI", "SFUIText-Light","Droid Sans Fallback";
+	font-size: 18px;
+	padding: 0 12px;
+	line-height: 1.6;
+	word-wrap: break-word;
+	color: #333333;
+}
+
+.content-wrapper{
+	max-width: 860px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+
+h2{
+	padding-bottom: .3em;
+    font-size: 2em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+h3{
+	font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+.table-of-contents li{
+	list-style-type: initial;
+}
+</style>
+
+<style>
+@font-face{font-display:block;font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_AMS-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_AMS-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_AMS-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-BoldItalic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-BoldItalic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-BoldItalic.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Italic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Italic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Italic.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-BoldItalic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-BoldItalic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-BoldItalic.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-Italic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-Italic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-Italic.ttf") format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Italic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Italic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Italic.ttf") format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Script-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Script-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Script-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size1-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size1-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size1-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size2-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size2-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size2-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size3-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size3-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size3-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size4-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size4-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size4-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Typewriter-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Typewriter-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Typewriter-Regular.ttf") format("truetype")}.katex{font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;position:relative;text-indent:0;text-rendering:auto}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.47"}.katex .katex-mathml{border:0;-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathboldfrak,.katex .textboldfrak{font-family:KaTeX_Fraktur;font-weight:700}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .mathsfit,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .smash{display:inline;line-height:0}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.2777777778em;margin-right:-.5555555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.1666666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.3333333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.6666666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.4566666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.1466666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.7142857143em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.8571428571em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.1428571429em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.2857142857em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.4285714286em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.7142857143em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.0571428571em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.4685714286em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.9628571429em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.5542857143em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.5555555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.6666666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.7777777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.8888888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.1111111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.3333333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.3044444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.7644444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.4166666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.5833333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.6666666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.7283333333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.0733333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.3472222222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.4166666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.4861111111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.5555555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.6944444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.4402777778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.7277777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.2893518519em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.3472222222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.4050925926em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.462962963em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.5208333333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.6944444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.2002314815em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.4398148148em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.2410800386em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.2892960463em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.337512054em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.3857280617em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.4339440694em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.4821600771em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.5785920926em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.6943105111em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.8331726133em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.1996142719em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.2009646302em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.2411575563em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.2813504823em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.3215434084em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.3617363344em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.4019292605em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.4823151125em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.578778135em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.6945337621em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.8336012862em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex svg{fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
+
+</style>
+
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1 id="webinar-demo-plan" tabindex="-1">Webinar Demo Plan</h1>
+<p><strong>Event:</strong> Claude Code: Real-World Use Cases and Lessons Learned
+<strong>Date:</strong> June 26, 2026, 2:30 to 3:30 pm ET
+<strong>Audience:</strong> Accenture AI Champion Network — engineers and PMs, mixed technical levels
+<strong>Goal:</strong> Show real results, make Claude Code feel accessible and worth trying
+<strong>Duration:</strong> 12 minutes</p>
+<hr>
+<h2 id="narrative" tabindex="-1">Narrative</h2>
+<blockquote>
+<p>"A complex, domain-specific project that would take days of manual Excel work — automated in hours, without writing a single line of code."</p>
+</blockquote>
+<p><strong>Mindset framing (say this at the start of the 2:00–4:00 segment):</strong></p>
+<blockquote>
+<p>"I don't treat Claude Code as a tool. I treat it as a co-worker. Like an intern who helps me with tasks.</p>
+<p>When I give a task to an intern, I do three things.</p>
+<p>One — I tell them the project context. The big picture. Where the finish line is. What the deliverables are. That's <em>context engineering</em>.</p>
+<p>Two — I give them specific requirements for the task. What the input is. What the output should be. What rules to follow. That's <em>prompt engineering</em>.</p>
+<p>Three — I give them examples to follow. Never zero-shot. Show them what good looks like.</p>
+<p>Same with Claude. Context, requirements, examples. That's the recipe."</p>
+</blockquote>
+<hr>
+<h2 id="demo-arc" tabindex="-1">Demo Arc</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Segment</th>
+<th>What to Show</th>
+<th>Why It Lands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00–0:30</td>
+<td><strong>Sandbox up front</strong></td>
+<td>Explain: production has client data I can't show; this is a sandbox with the same structure, downloadable for the audience</td>
+<td>Sets the constraint up front — no real client data on screen</td>
+</tr>
+<tr>
+<td>0:30–2:00</td>
+<td><strong>The problem</strong></td>
+<td>Pipeline slide → open sandbox IR workbook → open<code>data_dictionary/template/</code> → show <code>qaqc/qaqc_rules.md</code>. Mention real project has hundreds of properties and 47 QA rules</td>
+<td>Audience feels the complexity before you solve it</td>
+</tr>
+<tr>
+<td>2:00–4:00</td>
+<td><strong>Teaching Claude the project</strong></td>
+<td>Ask Claude to read the repo files and summarize; run<code>/init</code> to generate CLAUDE.md; scroll through it</td>
+<td>Key insight:<em>invest once in context, Claude remembers every session</em></td>
+</tr>
+<tr>
+<td>4:00–6:30</td>
+<td><strong>Dev: IR → Data Dictionary</strong></td>
+<td>Claude reads IR Excel, writes a script to copy template CSVs to<code>data_dictionary/</code> and populate them; show the populated CSV</td>
+<td>Shows Claude respects<em>your</em> conventions, not generic ones</td>
+</tr>
+<tr>
+<td>6:30–9:00</td>
+<td><strong>QA/QC automation</strong></td>
+<td>Claude writes check scripts from<code>qaqc/qaqc_rules.md</code>; deliberately introduce an error; script catches it; Claude fixes it and re-runs clean</td>
+<td>Non-developers: you don't need to read code to get value</td>
+</tr>
+<tr>
+<td>9:00–11:00</td>
+<td><strong>IFC model</strong></td>
+<td>Claude reads<code>ifc/sample_codes/</code>, writes a script that creates a pipe model with property sets from the data dictionary; show the output <code>.ifc</code> file</td>
+<td>Full pipeline payoff: the dictionary isn't just a spreadsheet</td>
+</tr>
+<tr>
+<td>11:00–12:00</td>
+<td><strong>One takeaway</strong></td>
+<td>"I didn't teach it Python. I taught it my project."</td>
+<td>Memorable, repeatable message for the network</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="segment-scripts" tabindex="-1">Segment Scripts</h2>
+<h3 id="0%3A00%E2%80%930%3A30-%E2%80%94-sandbox-up-front" tabindex="-1">0:00–0:30 — Sandbox up front</h3>
+<p><strong>Screen:</strong></p>
+<ol>
+<li>Show VS Code with the sandbox repo open in the Explorer</li>
+</ol>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"Quick note before I start. My demo today is based on a real client project. The production repo has client data I can't show on screen. Plus, I don't want to mess up the production repo. So I created a sandbox.</p>
+<p>Same structure. Same conventions. Just simpler dummy data. The good thing is you can download it after this session and play with it."</p>
+</blockquote>
+<hr>
+<h3 id="0%3A30%E2%80%932%3A00-%E2%80%94-the-problem" tabindex="-1">0:30–2:00 — The Problem</h3>
+<p><strong>Screen:</strong></p>
+<ol>
+<li>Briefly return to the pipeline slide as a recap visual (already shown at the very start of the demo)</li>
+<li>Open <code>information_requirements/information_requirements.xlsx</code> — scroll through the sheet, point out the columns</li>
+<li>Open <code>data_dictionary/template/</code> — show the empty CSV templates that need to be populated</li>
+<li>Open <code>qaqc/qaqc_rules.md</code> — show the two distilled rules</li>
+</ol>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"To recap the pipeline. Information requirements from the client come in as an Excel workbook. Based on them, I will create a data dictionary to define the objects and properties. Finally I need to create an IFC model based on the data dictionary.</p>
+<p>[open IR Excel] This is the requirements workbook. Each row is a property the client needs. The sandbox has four asset types and a handful of properties. The real project has hundreds of properties across a dozen sheets.</p>
+<p>[open template folder] This is the data dictionary template. Four CSVs we need to populate. Objects — one row per asset type, like a pipe or a manhole. Properties — one row per property, like diameter or material. Property Groups — bundles of related properties, like General Features. And a membership file that links properties to their groups. Each row needs a unique ID. Each property has to link to the right group. Strict rules about how everything connects.</p>
+<p>[open qaqc_rules.md] And this is the QA review. Two rules here. The real project has nearly 50 rules.</p>
+<p>Doing all of this by hand takes days. You have to keep the dictionary in sync with the requirements. You have to catch errors across many sheets. Easy to get wrong."</p>
+</blockquote>
+<p><strong>Transition:</strong> <em>"Let me see how Claude code can help."</em></p>
+<hr>
+<h3 id="2%3A00%E2%80%934%3A00-%E2%80%94-teaching-claude-the-project" tabindex="-1">2:00–4:00 — Teaching Claude the Project</h3>
+<p><strong>Screen:</strong></p>
+<ol>
+<li>Show VS Code Explorer — point out folder structure</li>
+<li>Open Claude Code chat panel — paste the onboarding prompt</li>
+<li>Show Claude reading through files and producing a summary</li>
+<li>Run <code>/init</code> — show <code>CLAUDE.md</code> being generated</li>
+<li>Scroll through <code>CLAUDE.md</code>: pipeline, folder conventions, URN key format, GUID format, Display_Order rule</li>
+</ol>
+<p><strong>Onboarding prompt (paste this):</strong></p>
+<pre class="hljs"><code><div>Please read the README.md, docs/project_scope.md, and the CLAUDE.md file in this repo.
+Then look at the folder structure — check what's in information_requirements/,
+data_dictionary/template/, qaqc/, and ifc/sample_codes/.
+When you're done, give me a brief summary: what is this project, what are the key
+conventions I need to follow, and what are the three main tasks we'll be doing today.
+</div></code></pre>
+<p><strong>Mindset framing (say this first, before the screen demo):</strong></p>
+<blockquote>
+<p>"In general, I don't treat Claude Code as a tool. I treat it as a co-worker. Like an intern who helps me with tasks.</p>
+<p>When I give a task to an intern, I do three things.</p>
+<p>One — I tell them the project context. The big picture. Where the finish line is. What the deliverables are. That's like <em>context engineering</em>.</p>
+<p>Two — I give them specific requirements for the task. What the input is. What the output should be. What rules to follow. That's like <em>prompt engineering</em>.</p>
+<p>Three — I give them examples to follow. Never do zero-shot. Show them what a good output looks like.</p>
+<p>Same with Claude. Context, requirements, examples. That's the recipe. The rest of this demo is me doing those three things."</p>
+</blockquote>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"The first thing is to help claude understand the project. I collected all the documents, such as requirements, reference files, QA rules and put them into one repo with clear folder structure. I also drafted a README.md with the project background, the four-stage workflow, the folder layout, and the key conventions — just the initial context I'd want any new team member to read first. [open README.md] Then I ran <code>/init</code> [show command] — that's a built-in Claude Code command that reads the codebase, including the README, and generates this file. [open CLAUDE.md]</p>
+<p>CLAUDE.md is the briefing document. Whenever you open Claude Code, it will read this file first. That is a way to keep the memory. Claude now knows the project. I just need to check it and maybe make some edits, just to make sure we are on the same page. One time setup. Every task after this is faster."</p>
+</blockquote>
+<p><strong>One quick tip before we start working:</strong></p>
+<blockquote>
+<p>"Just like <code>/init</code>, Claude Code has other built-in commands. Let me show you an important one.</p>
+<p>When I learned to drive, before I learned how to move a car, I had to learn how to stop one. Same idea here. When a prompt goes wrong, I type <code>/rewind</code>. That undoes Claude's last step and go back to the last checkpoint. Then I try again with a better prompt.</p>
+<p>It is good to learn this one early."</p>
+</blockquote>
+<hr>
+<h3 id="4%3A00%E2%80%936%3A30-%E2%80%94-dev%3A-ir-%E2%86%92-data-dictionary" tabindex="-1">4:00–6:30 — Dev: IR → Data Dictionary</h3>
+<p><strong>Screen:</strong></p>
+<ol>
+<li>Open <code>information_requirements/information_requirements.xlsx</code> — point out the columns (Elements, Property Sets, Properties, Description)</li>
+<li>Paste the dev prompt into Claude Code chat</li>
+<li>Watch Claude read the IR, write the script under <code>scripts/update/</code>, run it</li>
+<li>Open <code>data_dictionary/PROPERTIES_23386.csv</code> — show the populated rows with correct GUIDs, URN keys, and formatting</li>
+</ol>
+<p><strong>Dev prompt (paste this):</strong></p>
+<pre class="hljs"><code><div>Read the information requirements workbook at
+information_requirements/information_requirements.xlsx.
+It has one sheet with four columns: Elements, Property Sets, Properties, Description.
+Forward-fill the Elements and Property Sets columns where cells are blank — Excel
+often leaves them empty when values carry over from the row above.
+
+Then write a Python script under scripts/update/ that:
+1. Makes a copy of each CSV in data_dictionary/template/ into data_dictionary/
+2. Reads every row from the IR and adds the corresponding entries to:
+   - data_dictionary/PROPERTIES_23386.csv (one row per unique property)
+   - data_dictionary/PROPERTY_GROUPS_23386.csv (one row per unique property set)
+   - data_dictionary/GROUP_PROPERTY_MEMBERSHIP.csv (linking properties to groups)
+   - data_dictionary/OBJECTS_12006.csv (one row per unique element)
+
+Follow the conventions in CLAUDE.md: URN key format urn:demo:property:&lt;snake_case&gt;,
+Display_Order 0. Use data_dictionary/sample/ CSVs as a format reference —
+but use urn:demo:... keys, not urn:caltrans:...
+
+For every row added, generate a deterministic GUID using uuid5 derived from the
+entity's URN key — not uuid4. Use a fixed project namespace so the same URN key
+always produces the same GUID. Write the GUID to the Globally_unique_identifier
+column for objects, property groups, and properties alike. Use the same GUIDs in
+GROUP_PROPERTY_MEMBERSHIP.csv.
+
+When reading or writing the template CSVs, use encoding="utf-8-sig" — the files
+have an Excel BOM, and using plain utf-8 will silently corrupt the first column
+header, leaving the Globally_unique_identifier column blank.
+
+Save the script to scripts/update/ir_to_dd.py.
+</div></code></pre>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"Now let's build the data dictionary. The client gives me the information requirements. I need to turn them into the four CSV files.</p>
+<p>If I did this by hand, here is what I would do. Start from the empty templates. Copy them into the data dictionary folder. Then fill them in row by row from the IR. Now Claude Code will do it for me. [paste prompt]</p>
+<p>I'm not writing code. I'm describing the task the way I'd describe it to an engineer. What the input is. What the output should be. What rules to follow. [watch Claude work]</p>
+<p>[open populated CSV] There it is. Correct GUIDs. Correct URN keys. Linked to the right property groups."</p>
+</blockquote>
+<p><strong>Transition:</strong> <em>"Next step. Let's review the output and run QA/QC on it."</em></p>
+<hr>
+<h3 id="6%3A30%E2%80%939%3A00-%E2%80%94-qa%2Fqc" tabindex="-1">6:30–9:00 — QA/QC</h3>
+<p><strong>Screen:</strong></p>
+<ol>
+<li>Open <code>qaqc/qaqc_rules.md</code> — show the two rules (DD-01: GUID uniqueness, DD-02: key format)</li>
+<li>Paste the QA/QC prompt</li>
+<li>Watch Claude write <code>scripts/qaqc/run_checks.py</code></li>
+<li>Run script — show clean results</li>
+<li>Manually edit one row in <code>PROPERTIES_23386.csv</code>: change a property key to <code>urn:demo:property:Utility Type</code> (space instead of underscore)</li>
+<li>Re-run — show DD-02 violation caught</li>
+<li>Ask Claude to fix it — show it corrects the key and re-runs clean</li>
+</ol>
+<p><strong>QA/QC prompt (paste this):</strong></p>
+<pre class="hljs"><code><div>Read qaqc/qaqc_rules.md. It defines two rules:
+- DD-01: all GUIDs in data_dictionary/PROPERTIES_23386.csv must be unique
+- DD-02: all Property_key values must match urn:demo:property:&lt;snake_case&gt;
+
+Write a Python script at scripts/qaqc/run_checks.py that checks both rules
+against data_dictionary/PROPERTIES_23386.csv and writes a results summary to
+outputs/qaqc_results.txt — listing any violations found, or confirming all checks passed.
+</div></code></pre>
+<p><strong>Deliberate error to introduce (between runs):</strong></p>
+<ul>
+<li>Open <code>data_dictionary/PROPERTIES_23386.csv</code></li>
+<li>Find any <code>Property_key</code> value and change it to include a space, e.g. <code>urn:demo:property:Utility Type</code></li>
+<li>Re-run the QA/QC script → DD-02 violation appears in <code>outputs/qaqc_results.txt</code></li>
+<li>Ask Claude: <em>"Fix the violation and re-run the check"</em></li>
+</ul>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"OK, so the client gave us a QA review with 47 rules. I picked two of them for the demo. [open qaqc_rules.md] Rule DD-01 — no duplicate GUIDs. Rule DD-02 — every property key has to follow the URN format. Let me ask Claude write a checker for both. [paste prompt, watch Claude write the script, run it] Clean. All good.</p>
+<p>Now let's break something on purpose. Something that's easy to miss by eye. [edit the CSV] I just changed a property key to have a space in it. Let's re-run the check. [re-run] There it is. DD-02 violation. It tells me exactly which row, and what the problem is. Now let's ask Claude to fix it. [ask Claude to fix it, re-run] Clean again.</p>
+<p>This is the loop. Write. Check. Fix. Re-check. Claude handles all three."</p>
+</blockquote>
+<p><strong>Transition:</strong> <em>"OK, last step — let's build the model."</em></p>
+<hr>
+<h3 id="9%3A00%E2%80%9311%3A00-%E2%80%94-ifc-model" tabindex="-1">9:00–11:00 — IFC Model</h3>
+<p><strong>Screen:</strong></p>
+<ol>
+<li>Open the <code>ifc/sample_codes/</code> folder — show the three Python files (<code>ifc_sample_code_1.py</code>, <code>ifc_sample_code_2.py</code>, <code>ifc_sample_code_3.py</code>). Briefly open one or two to show the <code>ifcopenshell</code> pattern</li>
+<li>Paste the IFC prompt</li>
+<li>Watch Claude write <code>scripts/ifc/create_pipe_model.py</code></li>
+<li>User runs the script</li>
+<li>Show <code>outputs/demo_pipe_model.ifc</code> exists; optionally open in a viewer</li>
+<li>Run <code>/context</code> — show the bar; mention <code>/compact</code> as the next step when it fills up</li>
+</ol>
+<p><strong>IFC prompt (paste this):</strong></p>
+<pre class="hljs"><code><div>Read the sample scripts in ifc/sample_codes/ to understand the ifcopenshell.api pattern for geometry and property sets.
+
+Then write a Python script at scripts/ifc/create_pipe_model.py that:
+1. Creates a new IFC4X3 model with SI units and a Body context
+2. Adds one pipe segment named "Demo_Pipe_001" with a circular hollow profile:
+   300 mm OD, 25 mm wall, 2 m long, along the X axis
+3. Looks up the General Features property group (urn:demo:propertygroup:general_features)
+   by joining PROPERTY_GROUPS_23386.csv → GROUP_PROPERTY_MEMBERSHIP.csv →
+   PROPERTIES_23386.csv, and attaches those properties as "Pset_GeneralFeatures"
+   with realistic values (UtilityType: Water, Owner: City Public Works Department,
+   PermitNumber: UGU-2026-001)
+4. Saves to outputs/demo_pipe_model.ifc
+
+Two things to get right:
+- Follow ifc_sample_code_3.py: model.create_entity for the profile,
+  add_profile_representation + assign_representation + edit_object_placement
+- Profile values go to create_entity in mm (model unit), so multiply metres by 1000.
+  depth in add_profile_representation stays in metres — the API converts automatically.
+
+Use encoding="utf-8-sig" for all CSV reads.
+</div></code></pre>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"OK, last step. Let's build the IFC model. IFC is the open standard for BIM. IFC models are the end product for digital delivery projects — like the one we did for PennDOT, the first digital delivery project in the US bridge industry.</p>
+<p>Now, I want Claude to write Python code to generate IFC models. However, it takes special skills, and I don't think Anthropic trained the model about this specific task. So I want to give Claude some examples to follow. [open <code>ifc/sample_codes/</code> folder] I put three Python files in here. They all use a library called <code>ifcopenshell</code> to create IFC models. [open one file] This one is from the official <code>ifcopenshell</code> documentation. [open another] These two are from my previous projects. I use these files to teach Claude how to write IFC code. Remember the recipe — context, requirements, examples. This is the examples part. [paste prompt, watch Claude work]</p>
+<p>[user runs the script] And there's the model. The property set is attached. The data dictionary defined the properties. The IFC model consumes them. That's the full pipeline. Requirements in. Model out."</p>
+</blockquote>
+<p><strong>One more tip before the takeaway:</strong></p>
+<blockquote>
+<p>"We just did three big tasks in one session. Let me show you one more thing. [run <code>/context</code>] This shows me how full the conversation window is. When it gets close to full, I run <code>/compact</code>. That summarizes everything so far, so I can keep going without losing the thread. Good one to know when you're working on a long task."</p>
+</blockquote>
+<hr>
+<h3 id="11%3A00%E2%80%9312%3A00-%E2%80%94-takeaway" tabindex="-1">11:00–12:00 — Takeaway</h3>
+<p><strong>Script:</strong></p>
+<blockquote>
+<p>"So that's the shift. Stop thinking about what Claude can do in general. Start thinking about what it can do <em>in your project</em>, once it knows it."</p>
+</blockquote>
+<hr>
+<h2 id="lessons-learned-(say-these-in-the-claude.md-segment)" tabindex="-1">Lessons Learned (say these in the CLAUDE.md segment)</h2>
+<ul>
+<li><strong>Bash doesn't always work.</strong> In some environments, Claude can't run shell commands. Workaround: ask Claude to write a Python script that saves output to <code>outputs/</code> as a text file, then read that file. Slower, but reliable — and leaves a record of every exploration step.</li>
+<li><strong>Organize before you prompt.</strong> Folders, README, CLAUDE.md pay off on every task after.</li>
+<li><strong>Onboard like a new team member.</strong> Let it read, let it ask questions, let it summarize its understanding. Front-loaded investment.</li>
+<li><strong>Pre-write demo prompts.</strong> Typing live under pressure introduces typos. Paste from a prepared file.</li>
+</ul>
+<hr>
+<h2 id="pre-written-prompts-(ready-to-paste)" tabindex="-1">Pre-Written Prompts (ready to paste)</h2>
+<p>All four prompts are written out in the segment scripts above. Copy them from there.</p>
+<hr>
+<h2 id="next-steps-before-demo-day" tabindex="-1">Next Steps Before Demo Day</h2>
+<ul>
+<li><input type="checkbox" id="checkbox0"><label for="checkbox0">Run </label><code>scripts/explore/inspect_ir.py</code> to verify dummy IR content is suitable</li>
+<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1">Confirm </label><code>openpyxl</code> and <code>ifcopenshell</code> are installed in the demo environment</li>
+<li><input type="checkbox" id="checkbox2"><label for="checkbox2">Do a full dry run: run all three segments end-to-end in a test chat session</label></li>
+<li><input type="checkbox" id="checkbox3"><label for="checkbox3">Pre-stage the deliberate error row in the CSV (or practice making it live — it's fast)</label></li>
+<li><input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4">Build 1–2 intro slides: pipeline diagram + one-liner on project context</label></li>
+</ul>
+
+    </div>
+
+
+</body></html>
